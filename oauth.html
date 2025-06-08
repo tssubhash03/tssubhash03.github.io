@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub OAuth Redirect</title>
+</head>
+<body>
+  <h2>Logging in...</h2>
+  <script>
+    const code = new URLSearchParams(window.location.search).get("code");
+    if (code) {
+      localStorage.setItem("github_auth_code", code);
+      window.close(); // Will trigger `storage` event in extension if listened
+    } else {
+      document.body.innerHTML = "<h3>Authorization failed</h3>";
+    }
+  </script>
+</body>
+</html>
